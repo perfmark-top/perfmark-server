@@ -30,6 +30,11 @@ class Config: Loggable {
         val Port by IniVal.New(SectionCommon, "port", 11451)
         val Debug by IniVal.New(SectionCommon, "debug", false)
         val LogPath by IniVal.New(SectionCommon, "log-dir", "./logs")
+        val UpdateTick by IniVal.New(SectionCommon, "update-tick", "0 0 */8 * * *")
+
+        private const val SectionOrigin = "origin"
+        val OriginCpu by IniVal.New(SectionOrigin, "cpu", "https://www.cpubenchmark.net")
+        val OriginGpu by IniVal.New(SectionOrigin, "gpu", "https://www.videocardbenchmark.net")
 
         private const val SectionSql = "sql"
         val SqlUsername by IniVal.New(SectionSql, "username", Application.APPLICATION_BASE_NAME_LOWER)

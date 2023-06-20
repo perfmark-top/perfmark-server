@@ -83,7 +83,7 @@ dependencies {
 
     implementation("org.ini4j:ini4j:0.5.4")
 
-    implementation("org.springframework.cloud:spring-cloud-starter-openfeign:4.0.3")
+    implementation("com.dtflys.forest:forest-spring-boot-starter:1.5.32")
     implementation("com.google.code.gson:gson")
 
     /* https://github.com/sgpublic/UniversalKTX */
