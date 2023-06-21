@@ -77,17 +77,21 @@ dependencies {
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactive")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
+
     implementation("net.devh:grpc-server-spring-boot-starter:2.14.0.RELEASE")
     implementation("io.grpc:grpc-protobuf:${Deps.GrpcJava}")
     implementation("io.grpc:grpc-stub:${Deps.GrpcJava}")
 
     implementation("org.ini4j:ini4j:0.5.4")
 
-    implementation("com.dtflys.forest:forest-spring-boot-starter:1.5.32")
+    implementation("com.dtflys.forest:forest-spring-boot3-starter:1.5.32")
     implementation("com.google.code.gson:gson")
 
     /* https://github.com/sgpublic/UniversalKTX */
-    val uniktx = "1.0.0-alpha02"
+    val uniktx = "1.0.0-alpha03"
     implementation("io.github.sgpublic:uniktx-kotlin-common:$uniktx")
     implementation("io.github.sgpublic:uniktx-kotlin-logback:$uniktx")
 }

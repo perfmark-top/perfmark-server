@@ -3,11 +3,8 @@ package io.github.perfmarktop
 import io.github.perfmarktop.core.Config
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
-import org.springframework.boot.runApplication
 import org.springframework.context.ApplicationContext
 import org.springframework.scheduling.annotation.EnableScheduling
-import java.util.*
-import kotlin.collections.HashMap
 
 @EnableScheduling
 @SpringBootApplication

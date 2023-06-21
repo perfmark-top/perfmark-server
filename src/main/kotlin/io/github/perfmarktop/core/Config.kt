@@ -9,15 +9,8 @@ import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Component
 import java.io.File
 import java.io.IOException
-import java.nio.charset.StandardCharsets
 import java.util.*
 import kotlin.reflect.KProperty
-import kotlin.system.exitProcess
-
-/**
- * @author Madray Haven
- * @Date 2023/6/20 下午2:35
- */
 
 /**
  * @author sgpublic
@@ -31,10 +24,6 @@ class Config: Loggable {
         val Debug by IniVal.New(SectionCommon, "debug", false)
         val LogPath by IniVal.New(SectionCommon, "log-dir", "./logs")
         val UpdateTick by IniVal.New(SectionCommon, "update-tick", "0 0 */8 * * *")
-
-        private const val SectionOrigin = "origin"
-        val OriginCpu by IniVal.New(SectionOrigin, "cpu", "https://www.cpubenchmark.net")
-        val OriginGpu by IniVal.New(SectionOrigin, "gpu", "https://www.videocardbenchmark.net")
 
         private const val SectionSql = "sql"
         val SqlUsername by IniVal.New(SectionSql, "username", Application.APPLICATION_BASE_NAME_LOWER)
