@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="io.github.perfmarktop.mapper.GpuDataMapper">
+    <insert id="batchInsert" parameterType="java.util.ArrayList">
+        INSERT INTO gpu_data (id, name, price, g3d, g2d, value, tdp, power_perf, date, cat, bus, mem_size, core_clk,
+                              mem_clk, `rank`, samples, href, output)
+        VALUES
+        <foreach collection="data" item="gpuData" separator=",">
+            (#{gpuData.id}, #{gpuData.name}, #{gpuData.price}, #{gpuData.g3d}, #{gpuData.g2d}, #{gpuData.value}, #{gpuData.tdp}, #{gpuData.powerPerf},
+             #{gpuData.date}, #{gpuData.cat}, #{gpuData.bus}, #{gpuData.memSize},
+             #{gpuData.coreClk}, #{gpuData.memClk}, #{gpuData.rank}, #{gpuData.samples}, #{gpuData.href}, #{gpuData.output})
+        </foreach>
+    </insert>
+</mapper>

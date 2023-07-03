@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="io.github.perfmarktop.mapper.CpuDataMapper">
+
+    <insert id="batchInsert" parameterType="java.util.ArrayList">
+        INSERT INTO cpu_data (id
+        ,name
+        ,price
+        ,cpumark
+        ,thread
+        ,value
+        ,thread_value
+        ,tdp
+        ,power_perf
+        ,date
+        ,socket
+        ,cat
+        ,speed
+        ,turbo
+        ,cpu_count
+        ,cores
+        ,logicals
+        ,secondary_cores
+        ,secondary_logicals
+        ,rank
+        ,samples
+        ,href
+        ,output
+        )
+        VALUES
+        <foreach collection="data" item="cpuData" separator=",">
+            (#{cpuData.id}, #{cpuData.name}, #{cpuData.price}, #{cpuData.cpumark}, #{cpuData.thread}, #{cpuData.value}, #{cpuData.threadValue},
+            #{cpuData.tdp}, #{cpuData.powerPerf}, #{cpuData.date}, #{cpuData.socket}, #{cpuData.cat}, #{cpuData.speed}, #{cpuData.turbo}, #{cpuData.cpuCount},
+            #{cpuData.cores}, #{cpuData.logicals}, #{cpuData.secondaryCores}, #{cpuData.secondaryLogicals}, #{cpuData.rank}, #{cpuData.samples}, #{cpuData.href}, #{cpuData.output})
+        </foreach>
+    </insert>
+</mapper>
