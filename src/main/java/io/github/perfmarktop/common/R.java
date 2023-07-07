@@ -1,12 +1,12 @@
-package io.github.perfmarktop.exception;
+package io.github.perfmarktop.common;
 
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 返回数据
- *
- * @author Mark sunlightcs@gmail.com
+ * 返回值统一
+ * @author LukeZhang
+ * @date 2023/7/7 14:31
  */
 public class R extends HashMap<String, Object> {
 	private static final long serialVersionUID = 1L;
@@ -29,6 +29,7 @@ public class R extends HashMap<String, Object> {
 	}
 	public static R ok(Object obj) {
 		R r = new R();
+		r.put("code", "200");
 		r.put("data", obj);
 		return r;
 	}

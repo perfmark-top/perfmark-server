@@ -1,5 +1,6 @@
 package io.github.perfmarktop;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.toolkit.SqlRunner;
 import io.github.perfmarktop.mapper.CpuDataMapper;
 import io.github.perfmarktop.pojo.CpuData;

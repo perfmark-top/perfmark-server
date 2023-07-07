@@ -11,8 +11,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class GpuData {
-
-  @TableId
   private long id;
   private String name;
   private String price;
@@ -31,5 +29,8 @@ public class GpuData {
   private String samples;
   private String href;
   private String output;
+  private Integer g2dRank;
+  private Integer g3dRank;
+  private Integer valueRank;
 
 }

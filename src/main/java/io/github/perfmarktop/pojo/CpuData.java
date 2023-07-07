@@ -1,8 +1,8 @@
 package io.github.perfmarktop.pojo;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,8 +12,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CpuData {
-
-  //@TableId(value = "id", type = IdType.INPUT)
   private long id;
   private String name;
   private String price;
@@ -28,7 +26,6 @@ public class CpuData {
   private String cat;
   private String speed;
   private String turbo;
-  //@TableId(value = "cpuCount", type = IdType.INPUT)
   private String cpuCount;
   private String cores;
   private String logicals;
@@ -38,5 +35,7 @@ public class CpuData {
   private String samples;
   private String href;
   private String output;
-
+  private Integer cpumarkRank;
+  private Integer threadRank;
+  private Integer valueRank;
 }

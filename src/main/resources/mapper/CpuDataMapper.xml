@@ -4,16 +4,16 @@
 
     <insert id="batchInsert" parameterType="java.util.ArrayList">
         INSERT INTO cpu_data (id
-        ,name
+        ,`name`
         ,price
         ,cpumark
         ,thread
-        ,value
+        ,`value`
         ,thread_value
         ,tdp
         ,power_perf
-        ,date
-        ,socket
+        ,`date`
+        ,`socket`
         ,cat
         ,speed
         ,turbo
@@ -22,7 +22,7 @@
         ,logicals
         ,secondary_cores
         ,secondary_logicals
-        ,rank
+        ,`rank`
         ,samples
         ,href
         ,output
@@ -34,4 +34,28 @@
             #{cpuData.cores}, #{cpuData.logicals}, #{cpuData.secondaryCores}, #{cpuData.secondaryLogicals}, #{cpuData.rank}, #{cpuData.samples}, #{cpuData.href}, #{cpuData.output})
         </foreach>
     </insert>
+
+    <select id="getSortedCpuData" resultType="io.github.perfmarktop.vo.CpuVO">
+        SELECT `id`, `name`, cpumark, cpu_count, `value` FROM cpu_data
+        WHERE 1=1
+        <if test="key != null">
+            AND `name` LIKE CONCAT('%',#{key},'%')
+        </if>
+        <if test="sortParam != null and sortParam.field != null and sortParam.order != null">
+            ORDER BY ${sortParam.field} ${sortParam.order}
+        </if>
+    </select>
+
+    <select id="getCpuByIds" resultType="io.github.perfmarktop.vo.CpuVO">
+        SELECT `id`, `name`, cpumark, cpu_count, `value` , value_rank, thread_rank, cpumark_rank FROM cpu_data
+        WHERE id IN
+        <foreach collection="ids" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+    </select>
+    <select id="selectVOList" resultType="io.github.perfmarktop.vo.CpuVO">
+        SELECT `id`, `name`, cpumark, cpu_count,
+               `value` AS `value`,thread
+        FROM cpu_data
+    </select>
 </mapper>

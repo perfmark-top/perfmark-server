@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="io.github.perfmarktop.mapper.GpuDataMapper">
     <insert id="batchInsert" parameterType="java.util.ArrayList">
-        INSERT INTO gpu_data (id, name, price, g3d, g2d, value, tdp, power_perf, date, cat, bus, mem_size, core_clk,
+        INSERT INTO gpu_data (id, `name`, price, g3d, g2d, `value`, tdp, power_perf, `date`, cat, bus, mem_size, core_clk,
                               mem_clk, `rank`, samples, href, output)
         VALUES
         <foreach collection="data" item="gpuData" separator=",">
@@ -11,4 +11,20 @@
              #{gpuData.coreClk}, #{gpuData.memClk}, #{gpuData.rank}, #{gpuData.samples}, #{gpuData.href}, #{gpuData.output})
         </foreach>
     </insert>
+    <select id="getSortedGpuData" resultType="io.github.perfmarktop.vo.GpuVO">
+        SELECT id, `name`, g3d, `value` FROM gpu_data
+        WHERE 1=1
+        <if test="key != null">
+            AND `name` LIKE CONCAT('%',#{key},'%')
+        </if>
+        <if test="sortParam != null and sortParam.field != null and sortParam.order != null">
+            ORDER BY ${sortParam.field} ${sortParam.order}
+        </if>
+    </select>
+    <select id="getGpuByIds" resultType="io.github.perfmarktop.vo.GpuVO">
+        SELECT id, `name`, g3d, g2d_rank, g3d_rank, value_rank, `value`  FROM gpu_data
+        <foreach collection="ids" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+    </select>
 </mapper>
